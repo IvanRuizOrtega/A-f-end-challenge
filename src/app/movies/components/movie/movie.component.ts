@@ -19,8 +19,7 @@ export class MovieComponent implements OnInit {
 
   constructor(private router: Router ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   goToCharacter(movie: Movie): void {
     const id: string = String(movie.url).replace(/[^0-9]/g,'')

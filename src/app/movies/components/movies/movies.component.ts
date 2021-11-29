@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../../models/movie'
 import { Observable } from 'rxjs'
+import { select, Store } from '@ngrx/store'
+import { selectMovies } from '../../../store/modules/movie.selector'
+import { State } from '../../../store/modules/movie.reducer'
 
 
 @Component({
@@ -9,10 +12,12 @@ import { Observable } from 'rxjs'
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  @Input() movies$: Observable<Movie[]> | undefined
+  movies$: Observable<Movie[]> | undefined
 
-  constructor() { }
+  constructor(private store: Store<{ movies: State }>) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.movies$ = this.store.pipe(select(selectMovies))
+  }
 
 }

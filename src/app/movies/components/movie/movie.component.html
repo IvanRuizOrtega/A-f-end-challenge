@@ -1,0 +1,18 @@
+<div>
+  <div>
+    {{ index+1 }}
+  </div>
+  <div>
+    Title : {{ movie.title }}
+  </div>
+  <div>
+   Number of episodes:  {{ movie.episode_id }}
+  </div>
+  <div>
+    Director: {{ movie.director }}
+  </div>
+  <div>
+    Characters:<a (click)="goToCharacter(movie)"
+                  style="cursor: pointer; color: blue"> Characters </a>
+  </div>
+</div>

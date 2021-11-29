@@ -1,0 +1,6 @@
+<div>
+    <app-movie *ngFor="let movie of movies$ | async; let i=index"
+               [movie]="movie"
+               [index]="i">
+    </app-movie>
+</div>

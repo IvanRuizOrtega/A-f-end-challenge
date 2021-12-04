@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Movie } from '../../../models/movie'
 import { Route } from '../../../utils/route'
+import { Store } from '@ngrx/store'
+import { setMovie } from '../../../store/modules/movie.actions'
 
 @Component({
   selector: 'app-movie',
@@ -17,13 +19,15 @@ export class MovieComponent implements OnInit {
   private pathMovie: string = Route.movies
   private pathCharacter: string = Route.characters
 
-  constructor(private router: Router ) { }
+  constructor(private readonly router: Router,
+              private readonly store: Store<{ movie: Movie }>) { }
 
   ngOnInit(): void { }
 
   goToCharacter(movie: Movie): void {
     const id: string = String(movie.url).replace(/[^0-9]/g,'')
     const url: string = this.pathMovie.concat(`/${id}/`+ this.pathCharacter)
+    this.store.dispatch(setMovie({ movie }))
     this.router.navigate([url])
   }
 

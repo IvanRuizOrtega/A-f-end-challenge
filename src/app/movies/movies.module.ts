@@ -14,7 +14,7 @@ import { ListCharacterComponent } from './pages/list.characters/list.character.c
 
 // store
 import { StoreModule } from '@ngrx/store'
-import { movieFeatureKey,movieReducer } from '../store/modules/movie.reducer'
+import { movieFeatureKey, movieReducer } from '../store/modules/movie.reducer'
 
 @NgModule({
   declarations: [
